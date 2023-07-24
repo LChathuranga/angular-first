@@ -3,8 +3,11 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { AppService } from './services/app/app.service';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { AppState } from './state/app/app.state';
 
 @Component({
   standalone: true,
@@ -14,16 +17,19 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     AdminComponent,
     CommonModule,
     MatProgressBarModule,
+    MatToolbarModule
   ],
   selector: 'first-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  name = 'lahiru';
-  frameworks = ['Angular', 'React', 'VueJS'];
-  handleClick() {
-    this.name = 'Chathuranga';
+
+  email$: Observable<string | undefined>;
+  loading$: Observable<boolean>;
+
+  constructor(private store: Store){
+    this.email$ = this.store.select(AppState.email);
+    this.loading$ = this.store.select(AppState.loading);
   }
-  constructor(protected appService: AppService) {}
 }

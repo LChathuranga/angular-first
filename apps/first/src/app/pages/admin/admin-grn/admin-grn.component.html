@@ -1,1 +1,21 @@
-<button mat-button color="primary" (click)="appService.toggleLoading()">Toggle Loading ...</button>
+<button mat-button color="primary" (click)="toggle()">Toggle Loading ...</button>
+<form class="email-form" [formGroup]="adminGrnEmailFormGroup">
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput [formControl]="emailCtrl" />
+    <mat-error *ngIf="emailCtrl.hasError('email')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailCtrl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!adminGrnEmailFormGroup.valid"
+    (click)="onChangeEmail()"
+  >
+    Login
+  </button>
+</form>

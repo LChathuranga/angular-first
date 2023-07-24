@@ -18,11 +18,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  emailCtrl = new FormControl("lahiru@gmail.com", [
+  emailCtrl = new FormControl('lahiru@gmail.com', [
     Validators.required,
     Validators.email,
   ]);
-  passwordCtrl = new FormControl("lahiru1234", [Validators.required, Validators.minLength(3)]);
+  passwordCtrl = new FormControl('lahiru1234', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
 
   loginFormGroup = new FormGroup({
     email: this.emailCtrl,
