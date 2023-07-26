@@ -25,7 +25,7 @@ import { AppState } from './state/app/app.state';
 })
 export class AppComponent {
 
-  email$: Observable<string | undefined>;
+  email$: Observable<string | undefined | null>;
   loading$: Observable<boolean>;
 
   constructor(private store: Store){

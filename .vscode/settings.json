@@ -10,5 +10,6 @@
     "README.md": true,
     "tsconfig.base.json": true,
     ".vscode": true
-  }
+  },
+  "cSpell.words": ["Firestore"]
 }

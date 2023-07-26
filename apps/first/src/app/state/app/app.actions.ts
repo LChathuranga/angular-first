@@ -1,8 +1,10 @@
+import { User } from "@angular/fire/auth";
+
 export class ShowLoading {
   public static readonly type = '[App] ShowLoading';
   constructor(public loading: boolean) {}
 }
-export class ChangeEmail {
+export class UpdateUser {
   public static readonly type = '[App] ChangeEmail';
-  constructor(public email: string) {}
+  constructor(public user: firebase.default.User) {}
 }
